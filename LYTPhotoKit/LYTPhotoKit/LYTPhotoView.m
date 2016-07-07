@@ -89,12 +89,7 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
                 [_selectedPhotoArray addObject:self.addPhotoModel];
                 _addFlag = YES;
             }
-            if (_resultPhotoBlock) {
-                [_resultArray removeAllObjects];
-                [_resultArray addObjectsFromArray:_selectedPhotoArray];
-                [_resultArray removeLastObject];
-                _resultPhotoBlock(_resultArray);
-            }
+            [self formatResultArray:_selectedPhotoArray];
             [self reloadData];
            
         }];
@@ -136,17 +131,27 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
             }else{
                 _addFlag = NO;
             }
-            if (_resultPhotoBlock) {
-                [_resultArray removeAllObjects];
-                [_resultArray addObjectsFromArray:_selectedPhotoArray];
-                [_resultArray removeLastObject];
-                _resultPhotoBlock(_resultArray);
-            }
+          
+            [self formatResultArray:_selectedPhotoArray];
             [self reloadData];
             
         };
         [_vc presentViewController:photoVC animated:YES completion:nil];
         
+    }
+}
+
+- (void)formatResultArray:(NSArray *)photoArray{
+    if (_resultPhotoBlock) {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        [tempArray addObjectsFromArray:photoArray];
+        [tempArray removeLastObject];
+        NSMutableArray *resultArray = [NSMutableArray array];
+        for (int i = 0; i < [tempArray count]; i++) {
+            LYTPhotoModel *photoModel = tempArray[i];
+            [resultArray addObject:photoModel.photo];
+        }
+        _resultPhotoBlock(resultArray);
     }
 }
 
