@@ -17,6 +17,7 @@
         _photo = photo;
         _isSelected = selected;
         _type = type;
+        _deleteBtnFlag = NO;
     }
     return self;
 }

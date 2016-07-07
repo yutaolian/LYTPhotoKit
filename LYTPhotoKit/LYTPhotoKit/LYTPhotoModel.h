@@ -23,7 +23,7 @@
 
 @property (nonatomic, copy) NSString *timeLength;
 
-@property(nonatomic,assign) BOOL deleteFlag;
+@property(nonatomic,assign) BOOL deleteBtnFlag;
 
 
 //作为相册时的model

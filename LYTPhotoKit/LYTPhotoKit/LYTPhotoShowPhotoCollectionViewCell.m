@@ -94,6 +94,11 @@
 - (void)setData{
     _imageView.image = _photoModel.photo;
     _deleteBtn.tag = _index;
+    if(_photoModel.deleteBtnFlag){
+        _deleteBtn.alpha = 0;
+    }else{
+        _deleteBtn.alpha = 1;
+    }
 }
 
 

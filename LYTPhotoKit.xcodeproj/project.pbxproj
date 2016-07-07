@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44B666211D2E7ABE004F08A8 /* LYTPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */; };
 		FCACF0E21D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */; };
 		FCC12F621D2DE9930088087E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC12F611D2DE9930088087E /* main.m */; };
 		FCC12F651D2DE9930088087E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC12F641D2DE9930088087E /* AppDelegate.m */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44B6661F1D2E7ABE004F08A8 /* LYTPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoView.h; sourceTree = "<group>"; };
+		44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoView.m; sourceTree = "<group>"; };
 		FCACF0E01D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoShowPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoShowPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		FCC12F5D1D2DE9930088087E /* LYTPhotoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYTPhotoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +143,8 @@
 				FCE354681D2E2ED4003593BF /* LYTPhotoPreviewViewController.m */,
 				FCACF0E01D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.h */,
 				FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */,
+				44B6661F1D2E7ABE004F08A8 /* LYTPhotoView.h */,
+				44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */,
 			);
 			path = LYTPhotoKit;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				FCACF0E21D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m in Sources */,
 				FCE354631D2E2552003593BF /* LYTPhotoCollectionViewToolBar.m in Sources */,
 				FCC12F841D2DE9D80088087E /* LYTPhotoManager.m in Sources */,
+				44B666211D2E7ABE004F08A8 /* LYTPhotoView.m in Sources */,
 				FCC12F651D2DE9930088087E /* AppDelegate.m in Sources */,
 				FCC12F621D2DE9930088087E /* main.m in Sources */,
 				FCE3545D1D2DFB84003593BF /* LYTPhotoCollectionViewCell.m in Sources */,
