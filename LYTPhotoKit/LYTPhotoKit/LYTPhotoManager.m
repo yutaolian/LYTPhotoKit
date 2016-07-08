@@ -37,16 +37,12 @@
     return NO;
 }
 
-
 - (void)getAllPhotosArray:(PhotoArrayBlock)photoArray{
 
     
     NSMutableArray *allPhotoArray = [NSMutableArray array];
-    
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
-    
     BOOL allowPickingVideo = NO;
-    
     BOOL allowPickingImage = YES;
     
     if (allowPickingImage){
@@ -70,7 +66,7 @@
                 
                 PHAsset *asset = (PHAsset *)obj;
                 CGSize imageSize;
-                imageSize = CGSizeMake(400, 400);
+                imageSize = CGSizeMake(800, 1000);
                 NSLog(@"uiimage---%ld",idx);
                 
                 PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
