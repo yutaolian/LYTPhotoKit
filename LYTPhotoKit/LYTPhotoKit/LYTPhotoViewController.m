@@ -23,9 +23,7 @@
 
 @implementation LYTPhotoViewController
 
-
-- (instancetype)init
-{
+- (instancetype)initWithAllPhotos:(NSArray *)photoArray andSelectedPhotoArray:(NSArray *)selectedArray{
     LYTPhotoCategoryListViewController *photoCategoryListVC = [[LYTPhotoCategoryListViewController alloc] init];
     
     self = [super initWithRootViewController:photoCategoryListVC];
@@ -38,7 +36,7 @@
         }else{
             
             photoCategoryListVC.fromFlag = YES;
-            [self pushToPhotoCollectionViewController];
+            [self pushToPhotoCollectionViewControllerWithAllPhotos:photoArray andSelectedPhotoArray:selectedArray];
         }
     }    return self;
 }
@@ -51,11 +49,13 @@
     self.view.backgroundColor = LYT_DefaultBgColor;
 }
 
-- (void)pushToPhotoCollectionViewController{
+- (void)pushToPhotoCollectionViewControllerWithAllPhotos:(NSArray *)photoArray andSelectedPhotoArray:(NSArray *)selectedArray{
     LYTPhotoCollectionViewController *photoCollectionVC = [[LYTPhotoCollectionViewController alloc] init];
-    photoCollectionVC.selectedPhotoBlock = ^(NSArray *photoArray){
+    photoCollectionVC.updateAllPhotoArray = photoArray;
+    photoCollectionVC.selectedPhotoArray = selectedArray;
+    photoCollectionVC.selectedPhotoBlock = ^(NSArray *selectedArray,NSArray *allPhotoArray){
         if (_chooseDoneBlock) {
-            _chooseDoneBlock(photoArray);
+            _chooseDoneBlock(selectedArray,allPhotoArray);
         }
     };
     [self pushViewController:photoCollectionVC animated:YES];

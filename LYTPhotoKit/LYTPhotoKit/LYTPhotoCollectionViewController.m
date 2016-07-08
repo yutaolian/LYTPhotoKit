@@ -18,7 +18,10 @@
 
 @interface LYTPhotoCollectionViewController (){
 
-    NSArray *_allPhotoArray;
+    NSMutableArray *_allPhotoArray;
+    NSMutableArray*_queueArray;
+    
+    NSInteger _selectedNum;
 }
 
 @property(nonatomic,strong) UICollectionView *collectionView;
@@ -33,9 +36,9 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = LYT_DefaultBgColor;
-    
+    _allPhotoArray = [NSMutableArray array];
+    _queueArray = [NSMutableArray array];
     self.title = @"所有照片";
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"narrow_left"] style: UIBarButtonItemStylePlain target:self action:@selector(showPhotosList)];
     
@@ -43,8 +46,14 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismissVC)];
     
     [self initSubViews];
-    
-    [self initData];
+    if ([_updateAllPhotoArray count]) {
+        [_allPhotoArray removeAllObjects];
+        [_allPhotoArray addObjectsFromArray:_updateAllPhotoArray];
+        _toolBar.num = [NSString stringWithFormat:@"%ld",[_selectedPhotoArray count]];
+        [self.collectionView reloadData];
+    }else{
+        [self initData];
+    }
 }
 - (void)initSubViews{
     
@@ -55,7 +64,9 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
 - (void)initData{
     
     [[LYTPhotoManager shareInstance] getAllPhotosArray:^(NSArray *photoArray) {
-        _allPhotoArray = photoArray;
+        
+        [_allPhotoArray removeAllObjects];
+        [_allPhotoArray addObjectsFromArray:photoArray];
         [_collectionView reloadData];
     }];
 }
@@ -81,7 +92,7 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     if (!_toolBar) {
         _toolBar = [[LYTPhotoCollectionViewToolBar alloc] init];
         _toolBar.frame = CGRectMake(0, LYT_kScreenHeight-44, LYT_kScreenWidth, 44);
-        _toolBar.backgroundColor = [UIColor grayColor];
+        _toolBar.backgroundColor = [UIColor lightGrayColor];
         __weak LYTPhotoCollectionViewController *weakSelf = self;
         _toolBar.previewBtnBlock = ^(){
         
@@ -114,14 +125,14 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     cell.backgroundColor  = [UIColor redColor];
     cell.index = indexPath.row;
     LYTPhotoModel *photoModel = _allPhotoArray[indexPath.row];
+    photoModel.index = indexPath.row;
     cell.photoModel = photoModel;
     __weak LYTPhotoCollectionViewController *weakSelf = self;
     cell.selectedBtnBlock = ^(NSInteger index,BOOL selectedFlag){
-    
-        NSLog(@"index-----%ld---%ld",index,selectedFlag);
-        
-        [weakSelf updateSelectedStatusAtIndex:index andSelectedFlag:selectedFlag];
-        
+            if (selectedFlag) {
+                [_queueArray addObject:@(index)];
+            }
+            [weakSelf updateSelectedStatusAtIndex:index andSelectedFlag:selectedFlag];
     };
     return cell;
     
@@ -131,6 +142,25 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     if (selectedFlag) {
         LYTPhotoModel *photoModel = _allPhotoArray[index];
         photoModel.isSelected = YES;
+    }else{
+        LYTPhotoModel *photoModel = _allPhotoArray[index];
+        if (photoModel.index == index) {
+            photoModel.isSelected = NO;
+        }
+    }
+    [self verdictSelectedNumAtIndex:index];
+
+}
+
+- (void)verdictSelectedNumAtIndex:(NSInteger )index{
+    _selectedNum = [self getAllSelectedPhoto].count;
+    if (_selectedNum > LYT_kMaxPhotoCount) {
+        LYTPhotoModel *photoModel = _allPhotoArray[index];
+        photoModel.isSelected = NO;
+        [self showAlertWithTitle:[NSString stringWithFormat:@"你最多只能选择%zd张照片",LYT_kMaxPhotoCount]];
+        [_collectionView reloadData];
+    }else{
+        _toolBar.num = [NSString stringWithFormat:@"%ld",_selectedNum];
     }
 }
 
@@ -164,13 +194,15 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
 
     LYTPhotoPreviewViewController *photoPreviewVC = [[LYTPhotoPreviewViewController alloc] init];
     
+    photoPreviewVC.selectedArray = [self getAllSelectedPhoto];
+    
     [self.navigationController pushViewController:photoPreviewVC animated:YES];
 }
 
 - (void)choosePhotoDone{
     
     if (_selectedPhotoBlock) {
-        _selectedPhotoBlock([self getAllSelectedPhoto]);
+        _selectedPhotoBlock([self getAllSelectedPhoto],_allPhotoArray);
     }
 
     [self dismissVC];
@@ -195,6 +227,17 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+- (void)showAlertWithTitle:(NSString *)title {
+    if (LYT_iOS8Later) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil] show];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

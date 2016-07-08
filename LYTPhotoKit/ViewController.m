@@ -38,10 +38,11 @@
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         _photoView = [[LYTPhotoView alloc] initWithFrame: CGRectMake(0, 20, 368, 300) collectionViewLayout:flowLayout];
         _photoView.vc = self;
+        __weak ViewController *weakSelf = self;
+        
         _photoView.resultPhotoBlock = ^(NSArray *resultArray){
-            
             _imageArray = resultArray;
-            [_tableView reloadData];
+            [weakSelf.tableView reloadData];
             //获得已经选中的图片
             NSLog(@"result array---%ld",[resultArray count]);
             for (int i = 0; i < [resultArray count]; i++) {

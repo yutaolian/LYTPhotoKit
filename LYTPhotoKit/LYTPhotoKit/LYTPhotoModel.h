@@ -25,6 +25,8 @@
 
 @property(nonatomic,assign) BOOL deleteBtnFlag;
 
+@property(nonatomic,assign) NSInteger index;
+
 
 //作为相册时的model
 

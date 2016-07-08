@@ -25,6 +25,7 @@
 		FCE354631D2E2552003593BF /* LYTPhotoCollectionViewToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE354621D2E2552003593BF /* LYTPhotoCollectionViewToolBar.m */; };
 		FCE354661D2E2E83003593BF /* LYTPhotoGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE354651D2E2E83003593BF /* LYTPhotoGroupModel.m */; };
 		FCE354691D2E2ED4003593BF /* LYTPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE354681D2E2ED4003593BF /* LYTPhotoPreviewViewController.m */; };
+		FCE597E11D2F986400DFF89E /* LYTPhotoContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE597E01D2F986400DFF89E /* LYTPhotoContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,8 @@
 		FCE354651D2E2E83003593BF /* LYTPhotoGroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoGroupModel.m; sourceTree = "<group>"; };
 		FCE354671D2E2ED4003593BF /* LYTPhotoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoPreviewViewController.h; sourceTree = "<group>"; };
 		FCE354681D2E2ED4003593BF /* LYTPhotoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		FCE597DF1D2F986400DFF89E /* LYTPhotoContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoContentViewController.h; sourceTree = "<group>"; };
+		FCE597E01D2F986400DFF89E /* LYTPhotoContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				FCE354651D2E2E83003593BF /* LYTPhotoGroupModel.m */,
 				FCE354671D2E2ED4003593BF /* LYTPhotoPreviewViewController.h */,
 				FCE354681D2E2ED4003593BF /* LYTPhotoPreviewViewController.m */,
+				FCE597DF1D2F986400DFF89E /* LYTPhotoContentViewController.h */,
+				FCE597E01D2F986400DFF89E /* LYTPhotoContentViewController.m */,
 				FCACF0E01D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.h */,
 				FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */,
 				44B6661F1D2E7ABE004F08A8 /* LYTPhotoView.h */,
@@ -226,6 +231,7 @@
 				FCE354631D2E2552003593BF /* LYTPhotoCollectionViewToolBar.m in Sources */,
 				FCC12F841D2DE9D80088087E /* LYTPhotoManager.m in Sources */,
 				44B666211D2E7ABE004F08A8 /* LYTPhotoView.m in Sources */,
+				FCE597E11D2F986400DFF89E /* LYTPhotoContentViewController.m in Sources */,
 				FCC12F651D2DE9930088087E /* AppDelegate.m in Sources */,
 				FCC12F621D2DE9930088087E /* main.m in Sources */,
 				FCE3545D1D2DFB84003593BF /* LYTPhotoCollectionViewCell.m in Sources */,

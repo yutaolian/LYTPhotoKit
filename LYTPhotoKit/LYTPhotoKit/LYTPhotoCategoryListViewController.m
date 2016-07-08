@@ -14,6 +14,8 @@
  *  图片组（图片文件夹）
  */
 @interface LYTPhotoCategoryListViewController (){
+    
+    NSMutableArray *_photoCategoryArray;
 }
 
 
@@ -33,9 +35,9 @@ static NSString *MyID = @"PhotoCategoryListTableViewCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor  = LYT_DefaultBgColor;
-
+    _photoCategoryArray = [NSMutableArray array];
     //设置右侧键
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消1" style:UIBarButtonItemStylePlain target:self action:@selector(dismissVC)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismissVC)];
     if(_fromFlag){
         self.navigationItem.title = @"照片";
         [self.view addSubview:self.tableView];
@@ -73,7 +75,7 @@ static NSString *MyID = @"PhotoCategoryListTableViewCell";
 }
 //行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [_photoCategoryArray count];
 }
 //创建cell时每次都会调用
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,7 +92,7 @@ static NSString *MyID = @"PhotoCategoryListTableViewCell";
         NSLog(@"-------------%ld",indexPath.row);
     }
     //3.设置数据
-    cell.textLabel.text = [NSString stringWithFormat:@"num---%ld",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",_photoCategoryArray[indexPath.row]];
     
     //NSLog(@"--%p--cell--%ld",cell,indexPath.row);
     
@@ -127,63 +129,57 @@ static NSString *MyID = @"PhotoCategoryListTableViewCell";
     
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
     
-    BOOL allowPickingVideo = YES;
+    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", YES];
     
-    BOOL allowPickingImage = NO;
+    //    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld",NO];
     
-    if (allowPickingVideo){
-        option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
-    }
-    if (allowPickingImage){
-        option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld",PHAssetMediaTypeVideo];
-    }
     // option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:self.sortAscendingByModificationDate]];
-    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modificationDate" ascending:NO]];
+    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"modificationDate" ascending:YES]];
     
-    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
+    PHAssetCollectionSubtype smartAlbumSubtype = PHAssetCollectionSubtypeSmartAlbumUserLibrary | PHAssetCollectionSubtypeSmartAlbumRecentlyAdded | PHAssetCollectionSubtypeSmartAlbumVideos;
+    // For iOS 9, We need to show ScreenShots Album && SelfPortraits Album
+    if (LYT_iOS9Later) {
+        smartAlbumSubtype = PHAssetCollectionSubtypeSmartAlbumUserLibrary | PHAssetCollectionSubtypeSmartAlbumRecentlyAdded | PHAssetCollectionSubtypeSmartAlbumScreenshots | PHAssetCollectionSubtypeSmartAlbumSelfPortraits | PHAssetCollectionSubtypeSmartAlbumVideos;
+    }
+    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:smartAlbumSubtype options:nil];
     for (PHAssetCollection *collection in smartAlbums) {
-        if ([collection.localizedTitle isEqualToString:@"Camera Roll"] || [collection.localizedTitle isEqualToString:@"相机胶卷"] ||  [collection.localizedTitle isEqualToString:@"所有照片"] || [collection.localizedTitle isEqualToString:@"All Photos"]) {
-            PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:option];
-            
-            NSLog(@"collection.localizedTitle---%@",collection.localizedTitle);
-            NSLog(@"%@----",fetchResult);
-            
-            
-            
-            
-            [fetchResult enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                PHAsset *asset = (PHAsset *)obj;
-                
-                //                [_dataArray addObject:asset];
-                
-                CGSize imageSize;
-                imageSize = CGSizeMake(200, 200);
-                
-                
-                NSLog(@"uiimage---%ld",idx);
-                
-                PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
-                option.resizeMode = PHImageRequestOptionsResizeModeFast;
-                
-                PHImageRequestID pHImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFit options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    
-                    //[_dataArray addObject:result];
-                    
-                    //[_collectionView reloadData];
-                }];
-                
-                NSLog(@"pHImageRequestID---%d",pHImageRequestID);
-                
-            }];
-            
-            break;
+        PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:option];
+        //if (fetchResult.count < 1)
+        //  continue;
+        
+        //        if (fetchResult.count < 1) continue;
+        //        [_photoCategoryArray addObject:collection.localizedTitle];
+        if (fetchResult.count < 1) continue;
+        if ([collection.localizedTitle containsString:@"Deleted"] || [collection.localizedTitle isEqualToString:@"最近删除"]) continue;
+        if ([collection.localizedTitle isEqualToString:@"Camera Roll"] || [collection.localizedTitle isEqualToString:@"相机胶卷"] || [collection.localizedTitle isEqualToString:@"所有照片"] || [collection.localizedTitle isEqualToString:@"All Photos"]) {
+            [_photoCategoryArray insertObject:collection.localizedTitle atIndex:0];
+        } else {
+            [_photoCategoryArray addObject:collection.localizedTitle];
         }
+        
     }
     
+    PHFetchResult *albums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular | PHAssetCollectionSubtypeAlbumSyncedAlbum options:nil];
+    for (PHAssetCollection *collection in albums) {
+        PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:option];
+        // if (fetchResult.count < 1)
+        //   continue;
+        
+        if ([collection.localizedTitle isEqualToString:@"My Photo Stream"] || [collection.localizedTitle isEqualToString:@"我的照片流"]) {
+            if (_photoCategoryArray.count) {
+                [_photoCategoryArray insertObject:collection.localizedTitle atIndex:1];
+            } else {
+                [_photoCategoryArray addObject:collection.localizedTitle];
+            }
+        } else {
+            [_photoCategoryArray addObject:collection.localizedTitle];
+        }
+        
+        
+    }
+    
+    [_tableView reloadData];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

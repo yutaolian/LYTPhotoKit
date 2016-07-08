@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LYTPhotoNavigationController.h"
 
-typedef void(^ChooseDoneBlock)(NSArray *photoArray);
+typedef void(^ChooseDoneBlock)(NSArray *selectedArray,NSArray *allPhotoArray);
 
 @interface LYTPhotoViewController : LYTPhotoNavigationController
 
 @property(nonatomic,copy) ChooseDoneBlock chooseDoneBlock;
+@property(nonatomic,strong) NSArray *updateAllPhotoArray;
 
-//- (instancetype)initWithHasSelectedPhoto:(NSArray *)photoArray;
+- (instancetype)initWithAllPhotos:(NSArray *)photoArray andSelectedPhotoArray:(NSArray *)selectedArray;
 
 @end

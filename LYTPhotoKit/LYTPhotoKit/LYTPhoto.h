@@ -39,7 +39,14 @@
 #define LYT_PhotoCellSelectBtnWidth 30
 #define LYT_PhotoCellSelectBtnHeight 30
 
-#define LYT_kMaxPhotoCount 6
+//最多选择图片数量
+#define LYT_kMaxPhotoCount 3
+
+//选中数量的背景颜色
+#define LYT_NumLableBgColor [UIColor greenColor];
+//数量的字体言责
+#define LYT_NumFontColor [UIColor redColor];
+
 
 
 

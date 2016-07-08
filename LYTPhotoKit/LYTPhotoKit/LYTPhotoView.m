@@ -16,7 +16,8 @@
     NSMutableArray *_selectedPhotoArray;
     NSArray *_oldPhotoArray;
     BOOL _addFlag;
-    NSMutableArray *_resultArray;
+    NSArray *_resultArray;
+    NSMutableArray *_tempAllPhotoArray;
 }
 
 @property(nonatomic,strong) LYTPhotoModel *addPhotoModel;
@@ -38,8 +39,8 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
         self.dataSource = self;
         self.delegate = self;
     
+        _tempAllPhotoArray = [NSMutableArray array];
         _selectedPhotoArray = [NSMutableArray array];
-        _resultArray = [NSMutableArray array];
         _addFlag = YES;
         [_selectedPhotoArray addObject:self.addPhotoModel];
         
@@ -83,12 +84,21 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
         [self performBatchUpdates:^{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             [self deleteItemsAtIndexPaths:@[indexPath]];
+            
+            LYTPhotoModel *deletePhoto =_selectedPhotoArray[index];
+            for (int i = 0; i < [_tempAllPhotoArray count]; i++) {
+                LYTPhotoModel *photoModel = _tempAllPhotoArray[i];
+                if (deletePhoto.index == photoModel.index) {
+                    photoModel.isSelected = NO;
+                }
+            }
             [_selectedPhotoArray removeObjectAtIndex:index];
         } completion:^(BOOL finished) {
             if (!_addFlag) {
                 [_selectedPhotoArray addObject:self.addPhotoModel];
                 _addFlag = YES;
             }
+            
             [self formatResultArray:_selectedPhotoArray];
             [self reloadData];
            
@@ -121,11 +131,14 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == ([_selectedPhotoArray count] - 1)) {
-        LYTPhotoViewController *photoVC = [[LYTPhotoViewController alloc] init];
-        photoVC.chooseDoneBlock = ^(NSArray *photoArray){
+        LYTPhotoViewController *photoVC = [[LYTPhotoViewController alloc] initWithAllPhotos:_tempAllPhotoArray andSelectedPhotoArray:_resultArray];
+        photoVC.chooseDoneBlock = ^(NSArray *selectedArray,NSArray *allPhotoArray){
+            [_tempAllPhotoArray removeAllObjects];
+            [_tempAllPhotoArray addObjectsFromArray:allPhotoArray];
             [_selectedPhotoArray removeAllObjects];
-            [_selectedPhotoArray addObjectsFromArray:photoArray];
-            if ([photoArray count] < LYT_kMaxPhotoCount) {
+            [_selectedPhotoArray addObjectsFromArray:selectedArray];
+         
+            if ([selectedArray count] < LYT_kMaxPhotoCount) {
                 [_selectedPhotoArray addObject:self.addPhotoModel];
                 _addFlag = YES;
             }else{
@@ -145,12 +158,15 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
     if (_resultPhotoBlock) {
         NSMutableArray *tempArray = [NSMutableArray array];
         [tempArray addObjectsFromArray:photoArray];
-        [tempArray removeLastObject];
+        if (_addFlag) {
+            [tempArray removeLastObject];
+        }
         NSMutableArray *resultArray = [NSMutableArray array];
         for (int i = 0; i < [tempArray count]; i++) {
             LYTPhotoModel *photoModel = tempArray[i];
             [resultArray addObject:photoModel.photo];
         }
+        _resultArray = resultArray;
         _resultPhotoBlock(resultArray);
     }
 }

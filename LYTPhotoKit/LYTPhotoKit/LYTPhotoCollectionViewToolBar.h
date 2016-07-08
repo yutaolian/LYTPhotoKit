@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^PreviewBtnBlock)();
-
 typedef void(^DoneBtnBlock)();
 
 @interface LYTPhotoCollectionViewToolBar : UIView
 
 @property(nonatomic,copy)  PreviewBtnBlock previewBtnBlock;
 @property(nonatomic,copy)  DoneBtnBlock doneBtnBlock;
+
+@property(nonatomic,copy) NSString *num;
+
 
 @end

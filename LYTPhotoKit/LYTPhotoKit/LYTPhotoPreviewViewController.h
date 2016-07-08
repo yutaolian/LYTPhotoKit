@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYTPhotoPreviewViewController : UIViewController
+@interface LYTPhotoPreviewViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+@property(nonatomic,strong) NSArray *selectedArray;
 
 @end
