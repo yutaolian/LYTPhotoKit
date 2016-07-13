@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		44B666211D2E7ABE004F08A8 /* LYTPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */; };
+		FC7802351D35EA970095EA2C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7802341D35EA970095EA2C /* TestViewController.m */; };
+		FC7802381D35EB8C0095EA2C /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7802371D35EB8C0095EA2C /* TestTableViewCell.m */; };
+		FC78023B1D360D1B0095EA2C /* UIImage+LYTPhotoKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FC78023A1D360D1B0095EA2C /* UIImage+LYTPhotoKit.m */; };
+		FC78023D1D360D910095EA2C /* LYTPhotoKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC78023C1D360D910095EA2C /* LYTPhotoKit.bundle */; };
 		FCACF0E21D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */; };
 		FCC12F621D2DE9930088087E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC12F611D2DE9930088087E /* main.m */; };
 		FCC12F651D2DE9930088087E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC12F641D2DE9930088087E /* AppDelegate.m */; };
@@ -31,6 +35,13 @@
 /* Begin PBXFileReference section */
 		44B6661F1D2E7ABE004F08A8 /* LYTPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoView.h; sourceTree = "<group>"; };
 		44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoView.m; sourceTree = "<group>"; };
+		FC7802331D35EA970095EA2C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		FC7802341D35EA970095EA2C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		FC7802361D35EB8C0095EA2C /* TestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewCell.h; sourceTree = "<group>"; };
+		FC7802371D35EB8C0095EA2C /* TestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
+		FC7802391D360D1B0095EA2C /* UIImage+LYTPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LYTPhotoKit.h"; sourceTree = "<group>"; };
+		FC78023A1D360D1B0095EA2C /* UIImage+LYTPhotoKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LYTPhotoKit.m"; sourceTree = "<group>"; };
+		FC78023C1D360D910095EA2C /* LYTPhotoKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LYTPhotoKit.bundle; sourceTree = "<group>"; };
 		FCACF0E01D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTPhotoShowPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYTPhotoShowPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		FCC12F5D1D2DE9930088087E /* LYTPhotoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYTPhotoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +119,8 @@
 				FCC12F6E1D2DE9930088087E /* LaunchScreen.storyboard */,
 				FCC12F711D2DE9930088087E /* Info.plist */,
 				FCC12F601D2DE9930088087E /* Supporting Files */,
+				FC7802331D35EA970095EA2C /* TestViewController.h */,
+				FC7802341D35EA970095EA2C /* TestViewController.m */,
 			);
 			path = LYTPhotoKit;
 			sourceTree = "<group>";
@@ -116,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				FCC12F611D2DE9930088087E /* main.m */,
+				FC7802361D35EB8C0095EA2C /* TestTableViewCell.h */,
+				FC7802371D35EB8C0095EA2C /* TestTableViewCell.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -150,6 +165,9 @@
 				FCACF0E11D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m */,
 				44B6661F1D2E7ABE004F08A8 /* LYTPhotoView.h */,
 				44B666201D2E7ABE004F08A8 /* LYTPhotoView.m */,
+				FC7802391D360D1B0095EA2C /* UIImage+LYTPhotoKit.h */,
+				FC78023A1D360D1B0095EA2C /* UIImage+LYTPhotoKit.m */,
+				FC78023C1D360D910095EA2C /* LYTPhotoKit.bundle */,
 			);
 			path = LYTPhotoKit;
 			sourceTree = "<group>";
@@ -212,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC12F701D2DE9930088087E /* LaunchScreen.storyboard in Resources */,
+				FC78023D1D360D910095EA2C /* LYTPhotoKit.bundle in Resources */,
 				FCC12F6D1D2DE9930088087E /* Assets.xcassets in Resources */,
 				FCC12F6B1D2DE9930088087E /* Main.storyboard in Resources */,
 			);
@@ -228,14 +247,17 @@
 				FCC12F681D2DE9930088087E /* ViewController.m in Sources */,
 				FCC12F831D2DE9D80088087E /* LYTPhotoCollectionViewController.m in Sources */,
 				FCACF0E21D2E531500BD69B2 /* LYTPhotoShowPhotoCollectionViewCell.m in Sources */,
+				FC78023B1D360D1B0095EA2C /* UIImage+LYTPhotoKit.m in Sources */,
 				FCE354631D2E2552003593BF /* LYTPhotoCollectionViewToolBar.m in Sources */,
 				FCC12F841D2DE9D80088087E /* LYTPhotoManager.m in Sources */,
 				44B666211D2E7ABE004F08A8 /* LYTPhotoView.m in Sources */,
+				FC7802381D35EB8C0095EA2C /* TestTableViewCell.m in Sources */,
 				FCE597E11D2F986400DFF89E /* LYTPhotoContentViewController.m in Sources */,
 				FCC12F651D2DE9930088087E /* AppDelegate.m in Sources */,
 				FCC12F621D2DE9930088087E /* main.m in Sources */,
 				FCE3545D1D2DFB84003593BF /* LYTPhotoCollectionViewCell.m in Sources */,
 				FCC12F861D2DE9D80088087E /* LYTPhotoViewController.m in Sources */,
+				FC7802351D35EA970095EA2C /* TestViewController.m in Sources */,
 				FCE354661D2E2E83003593BF /* LYTPhotoGroupModel.m in Sources */,
 				FCC12F851D2DE9D80088087E /* LYTPhotoNavigationController.m in Sources */,
 				FCE354601D2DFD3B003593BF /* LYTPhotoModel.m in Sources */,

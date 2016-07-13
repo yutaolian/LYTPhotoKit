@@ -39,7 +39,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			peAnQiirwFw5WPd1FGC8pP0UeWs=
+			JA3R4x2ZgDB/xMagbopMCbGIRQg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -48,7 +48,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6invNpAHtjijk2Mf8teCwAl6EVY=
+			FHfuYZieKf+O+3nGbj6dH5Gw3TU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RKKle5AAMAsv9jw63eZWoRtmUbQ=
+			oYM5CJMnOm40lwhl8Va7YK/vy7w=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -66,7 +66,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			apcyX/BZzYHqc1eN7lapvzCKJRY=
+			lPJhBrI3S4LxNunMriYmLUqZwPA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -92,6 +92,43 @@
 		<key>Info.plist</key>
 		<data>
 		f1BOlqU83IbTTV0glVqLC3G90Vk=
+		</data>
+		<key>LYTPhotoKit.bundle/Root.plist</key>
+		<data>
+		jOhqEUF1/xyY+fuswiWT+ELC3dI=
+		</data>
+		<key>LYTPhotoKit.bundle/add_btn.png</key>
+		<data>
+		7cINSNyJU8yYDUfjrrRwOHWsNtg=
+		</data>
+		<key>LYTPhotoKit.bundle/en.lproj/Root.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t4KY9Gh4uIiOv7VnHtRrKEuPRY8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_def_photoPickerVc@2x.png</key>
+		<data>
+		TowaKFKzU3fYhK+It4oKIhuCpk0=
+		</data>
+		<key>LYTPhotoKit.bundle/photo_def_previewVc@2x.png</key>
+		<data>
+		TowaKFKzU3fYhK+It4oKIhuCpk0=
+		</data>
+		<key>LYTPhotoKit.bundle/photo_delete@2x.png</key>
+		<data>
+		IOQGypNAiLsyl0Ygb1OcnylEqtY=
+		</data>
+		<key>LYTPhotoKit.bundle/photo_sel_photoPickerVc@2x.png</key>
+		<data>
+		1maHDZQyFhPSgDG5iqKrPz10BQE=
+		</data>
+		<key>LYTPhotoKit.bundle/photo_sel_previewVc@2x.png</key>
+		<data>
+		YGb26ZPCkiAL0gm2EPZvp52S3h4=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -158,11 +195,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			peAnQiirwFw5WPd1FGC8pP0UeWs=
+			JA3R4x2ZgDB/xMagbopMCbGIRQg=
 			</data>
 			<key>hash2</key>
 			<data>
-			9dLEEDKE2zl8+ChHue3fLqH8hZQYZqGcmRD65aMXsmM=
+			RFOUeOCWBdsRTm/D78yv7DMCUUgOfYL2AU3ruseLmJc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -171,11 +208,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6invNpAHtjijk2Mf8teCwAl6EVY=
+			FHfuYZieKf+O+3nGbj6dH5Gw3TU=
 			</data>
 			<key>hash2</key>
 			<data>
-			xs+M/KlxVEi8bxVRWoqgkX0Ov6YpvvQmPGCrSeUwKYQ=
+			op3u49coFAB/pWzJzcFO92wiHHq7mADrU9e5KNmHbzo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -184,11 +221,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RKKle5AAMAsv9jw63eZWoRtmUbQ=
+			oYM5CJMnOm40lwhl8Va7YK/vy7w=
 			</data>
 			<key>hash2</key>
 			<data>
-			wtXNykZJSABcwiEaugc8qP4jA+MUBHVgWW74tyJXzZE=
+			UyeK/QbFGTiF0gnOt9UGi0PerYA/F/Dge79plRL3v4M=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -197,11 +234,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			apcyX/BZzYHqc1eN7lapvzCKJRY=
+			lPJhBrI3S4LxNunMriYmLUqZwPA=
 			</data>
 			<key>hash2</key>
 			<data>
-			/BiHbpuSCVIOdFwi/x+oPVILpkhgh534Ky3P6Ym2fOY=
+			y56pLgkiuI+uXFT7UFYOxxLS9YoBMAjMH7y/EnAdTHE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -231,6 +268,96 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>LYTPhotoKit.bundle/Root.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jOhqEUF1/xyY+fuswiWT+ELC3dI=
+			</data>
+			<key>hash2</key>
+			<data>
+			m26DmegPkB5jwUJkVEtLlObYALX8He100Ny0+NNJg/g=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/add_btn.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7cINSNyJU8yYDUfjrrRwOHWsNtg=
+			</data>
+			<key>hash2</key>
+			<data>
+			nLygGz0hF6I1LMT6qXL0agZYOLt7p/kFh0VxQAFzsYY=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/en.lproj/Root.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t4KY9Gh4uIiOv7VnHtRrKEuPRY8=
+			</data>
+			<key>hash2</key>
+			<data>
+			xUzNd7J7w99oAnMIWGe1dAGArHMuEXwQqxSziDU5vLk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_def_photoPickerVc@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TowaKFKzU3fYhK+It4oKIhuCpk0=
+			</data>
+			<key>hash2</key>
+			<data>
+			MtEKha2kp7hKoO2wSA7YGxzTBDlW1Yeg1yI0MrLoiWs=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_def_previewVc@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TowaKFKzU3fYhK+It4oKIhuCpk0=
+			</data>
+			<key>hash2</key>
+			<data>
+			MtEKha2kp7hKoO2wSA7YGxzTBDlW1Yeg1yI0MrLoiWs=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_delete@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IOQGypNAiLsyl0Ygb1OcnylEqtY=
+			</data>
+			<key>hash2</key>
+			<data>
+			8ADEnAOFC7xGRfbMPEz9k+oyHwdAteEsKsoqgah9g5g=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_sel_photoPickerVc@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1maHDZQyFhPSgDG5iqKrPz10BQE=
+			</data>
+			<key>hash2</key>
+			<data>
+			s6RfkvNkaQeeKIEe9rw2kIJjoUdN7J7xt81ONMfSLAI=
+			</data>
+		</dict>
+		<key>LYTPhotoKit.bundle/photo_sel_previewVc@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YGb26ZPCkiAL0gm2EPZvp52S3h4=
+			</data>
+			<key>hash2</key>
+			<data>
+			b4LvW24gDlJWARWOh/M30GpmslkX+8hVxCMRtEj6Z0U=
+			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>

@@ -32,11 +32,10 @@
 
 - (void)initSubViews{
     
-    
-    CGFloat imageWidth = LYT_PhotoCellImageWidth;
-    CGFloat iamgeHeight = LYT_PhotoCellImageHeight;
-    
-    
+
+    CGFloat  imageWidth = LYT_UserShowPhotoCellWidth;
+    CGFloat  imageHeight = LYT_UserShowPhotoCellHeight;
+
     CGFloat selectBtnWidth = LYT_PhotoCellSelectBtnWidth;
     CGFloat selectBtnHeight = LYT_PhotoCellSelectBtnHeight;
     
@@ -45,7 +44,7 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|[_imageView(%f)]|",imageWidth] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[_imageView(%f)]|",iamgeHeight] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[_imageView(%f)]|",imageHeight] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|-(>=0)-[_deleteBtn(%f)]|",selectBtnWidth] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_deleteBtn)]];
     
@@ -66,8 +65,8 @@
     if (!_deleteBtn) {
         _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _deleteBtn.translatesAutoresizingMaskIntoConstraints = NO;
-        [_deleteBtn setImage:[UIImage imageNamed:@"photo_delete"] forState:UIControlStateNormal];
-        [_deleteBtn setImage:[UIImage imageNamed:@"photo_delete"] forState:UIControlStateSelected];
+        [_deleteBtn setImage:[UIImage imageNamedFromMyBundle:@"photo_delete"] forState:UIControlStateNormal];
+        [_deleteBtn setImage:[UIImage imageNamedFromMyBundle:@"photo_delete"] forState:UIControlStateSelected];
         [_deleteBtn addTarget:self action:@selector(deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _deleteBtn;

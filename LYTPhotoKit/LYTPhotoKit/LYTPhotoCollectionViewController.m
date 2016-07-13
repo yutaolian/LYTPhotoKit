@@ -40,8 +40,6 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
     _allPhotoArray = [NSMutableArray array];
     _queueArray = [NSMutableArray array];
     self.title = @"所有照片";
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"narrow_left"] style: UIBarButtonItemStylePlain target:self action:@selector(showPhotosList)];
-    
     //设置右侧键
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismissVC)];
     
@@ -122,7 +120,6 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LYTPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BrowseImageIndentifier forIndexPath:indexPath];
-    cell.backgroundColor  = [UIColor redColor];
     cell.index = indexPath.row;
     LYTPhotoModel *photoModel = _allPhotoArray[indexPath.row];
     photoModel.index = indexPath.row;
@@ -193,9 +190,7 @@ static NSString *const BrowseImageIndentifier = @"BrowseImageCollectionViewInden
 - (void)pushToPhotoPreviewViewController{
 
     LYTPhotoPreviewViewController *photoPreviewVC = [[LYTPhotoPreviewViewController alloc] init];
-    
     photoPreviewVC.selectedArray = [self getAllSelectedPhoto];
-    
     [self.navigationController pushViewController:photoPreviewVC animated:YES];
 }
 

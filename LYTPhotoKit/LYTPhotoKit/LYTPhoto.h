@@ -16,6 +16,7 @@
 #import "LYTPhotoManager.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "UIImage+LYTPhotoKit.h"
 
 //当前手机系统版本号
 #define LYT_iOS7Later ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f)
@@ -31,23 +32,32 @@
 #define LYT_DefaultBgColor [UIColor whiteColor]
 
 //图片collection 页面展示图片的大小
-#define LYT_PhotoCellImageWidth 80
-#define LYT_PhotoCellImageHeight 80
+#define LYT_DefaultPhotoCellWidth 80
+#define LYT_DefaultPhotoCellHeight 80
+
+//图片collection 页面展示图片的大小
+#define LYT_UserShowPhotoCellWidth 55
+#define LYT_UserShowPhotoCellHeight 55
+
+#define LYT_CellToTop 15
+#define LYT_CellToLeft 15
+#define LYT_CellToRight 15
+#define LYT_CellToBottom 15
+#define LYT_CellToOutSide 15
+#define LYT_CellToCell 10
 
 
 //图片collection 右上角选择按钮的大小
-#define LYT_PhotoCellSelectBtnWidth 30
-#define LYT_PhotoCellSelectBtnHeight 30
+#define LYT_PhotoCellSelectBtnWidth 25
+#define LYT_PhotoCellSelectBtnHeight 25
 
 //最多选择图片数量
-#define LYT_kMaxPhotoCount 3
+#define LYT_kMaxPhotoCount 5
 
 //选中数量的背景颜色
 #define LYT_NumLableBgColor [UIColor greenColor];
 //数量的字体言责
 #define LYT_NumFontColor [UIColor redColor];
-
-
 
 
 

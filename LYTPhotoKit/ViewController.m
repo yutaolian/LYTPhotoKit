@@ -50,6 +50,11 @@
             }
 
         };
+        
+        __weak LYTPhotoView *weakPhotoView = _photoView;
+        weakPhotoView.heightOfPhotosBlock = ^(CGFloat height){
+            weakPhotoView.frame = CGRectMake(_photoView.frame.origin.x, _photoView.frame.origin.y, _photoView.frame.size.width, height);
+        };
     }
     return _photoView;
 }

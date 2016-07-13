@@ -32,8 +32,8 @@
 - (void)initSubViews{
     
     
-    CGFloat imageWidth = LYT_PhotoCellImageWidth;
-    CGFloat iamgeHeight = LYT_PhotoCellImageHeight;
+    CGFloat imageWidth = LYT_DefaultPhotoCellWidth;
+    CGFloat imageHeight = LYT_DefaultPhotoCellHeight;
     
     
     CGFloat selectBtnWidth = LYT_PhotoCellSelectBtnWidth;
@@ -44,7 +44,7 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|[_imageView(%f)]|",imageWidth] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[_imageView(%f)]|",iamgeHeight] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[_imageView(%f)]|",imageHeight] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_imageView)]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|-(>=0)-[_selectBtn(%f)]|",selectBtnWidth] options:0 metrics:0 views:NSDictionaryOfVariableBindings(_selectBtn)]];
     
@@ -65,8 +65,8 @@
     if (!_selectBtn) {
         _selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _selectBtn.translatesAutoresizingMaskIntoConstraints = NO;
-        [_selectBtn setImage:[UIImage imageNamed:@"photo_def_photoPickerVc"] forState:UIControlStateNormal];
-        [_selectBtn setImage:[UIImage imageNamed:@"photo_sel_photoPickerVc"] forState:UIControlStateSelected];
+        [_selectBtn setImage:[UIImage imageNamedFromMyBundle:@"photo_def_photoPickerVc"] forState:UIControlStateNormal];
+        [_selectBtn setImage:[UIImage imageNamedFromMyBundle:@"photo_sel_photoPickerVc"] forState:UIControlStateSelected];
         [_selectBtn addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _selectBtn;

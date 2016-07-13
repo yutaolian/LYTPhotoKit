@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^ResultPhotoBlock)(NSArray *resultArray);
+typedef void(^HeightOfPhotosBlock)(CGFloat height);
 
 @interface LYTPhotoView : UICollectionView<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,strong) UIViewController *vc;
-
-
 @property(nonatomic,copy) ResultPhotoBlock resultPhotoBlock;
+
+@property(nonatomic,copy) HeightOfPhotosBlock heightOfPhotosBlock;
 
 
 

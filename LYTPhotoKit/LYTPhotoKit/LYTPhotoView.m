@@ -8,8 +8,8 @@
 
 #import "LYTPhotoView.h"
 #import "LYTPhoto.h"
-#import "LYTPhotoModel.h"
 #import "LYTPhotoShowPhotoCollectionViewCell.h"
+#import "LYTPhotoPreviewViewController.h"
 
 @interface LYTPhotoView(){
     
@@ -53,7 +53,7 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
 
 - (LYTPhotoModel *)addPhotoModel{
     if (!_addPhotoModel) {
-        UIImage *image = [UIImage imageNamed:@"add_btn"];
+        UIImage *image = [UIImage  imageNamedFromMyBundle:@"add_btn"];
         _addPhotoModel = [[LYTPhotoModel alloc] initWithPhoto:image isSelected:NO andType:0];
         _addPhotoModel.deleteBtnFlag = YES;
     }
@@ -112,23 +112,25 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
 #pragma mark 设置cell的大小
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(80,80);
+    return CGSizeMake(LYT_UserShowPhotoCellWidth,LYT_UserShowPhotoCellHeight);
     
 }
 
 #pragma mark 设置cell相对于外界的距离
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
-    return UIEdgeInsetsMake(15, 15 , 15,15);
+    return UIEdgeInsetsMake(LYT_CellToTop, LYT_CellToLeft , LYT_CellToRight,LYT_CellToBottom);
     
 }
 #pragma mark 左右距离
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     
-    return 0;
+    return LYT_CellToCell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"indexpath---%@",indexPath);
     
     if (indexPath.row == ([_selectedPhotoArray count] - 1)) {
         LYTPhotoViewController *photoVC = [[LYTPhotoViewController alloc] initWithAllPhotos:_tempAllPhotoArray andSelectedPhotoArray:_resultArray];
@@ -151,6 +153,13 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
         };
         [_vc presentViewController:photoVC animated:YES completion:nil];
         
+    }else{
+        
+        LYTPhotoPreviewViewController *photoPreviewVC = [[LYTPhotoPreviewViewController alloc] init];
+        
+        [self formatResultArray:_selectedPhotoArray];
+        photoPreviewVC.selectedArray = _resultArray;
+        [_vc.navigationController pushViewController:photoPreviewVC animated:YES];
     }
 }
 
@@ -167,8 +176,17 @@ static NSString *const collectionIndentifier = @"LYTPhotoViewCell";
             [resultArray addObject:photoModel.photo];
         }
         _resultArray = resultArray;
-        _resultPhotoBlock(resultArray);
+        _resultPhotoBlock(_resultArray);
+        _heightOfPhotosBlock([self heightOfResultArray:_resultArray]);
     }
+}
+
+- (CGFloat)heightOfResultArray:(NSArray *)resultArray{
+    NSInteger count = [resultArray count];
+    if (count >= 4) {
+        return LYT_UserShowPhotoCellHeight * 2 + LYT_CellToTop + LYT_CellToBottom;
+    }
+    return LYT_UserShowPhotoCellHeight + LYT_CellToTop + LYT_CellToBottom;
 }
 
 

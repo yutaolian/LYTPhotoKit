@@ -81,15 +81,14 @@
                 
                 NSLog(@"pHImageRequestID---%d",pHImageRequestID);
                 
+//                UIEdgeInsets
+                
             }];
             
             photoArray(allPhotoArray);
             break;
         }
-    
-        
     }
-
 }
 
 @end

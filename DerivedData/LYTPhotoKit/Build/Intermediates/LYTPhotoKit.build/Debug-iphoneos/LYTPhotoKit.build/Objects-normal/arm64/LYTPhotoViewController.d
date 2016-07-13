@@ -6,4 +6,5 @@ dependencies: \
   /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/LYTPhotoCollectionViewController.h \
   /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/LYTPhotoManager.h \
   /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/LYTPhotoModel.h \
-  /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/LYTPhoto.h
+  /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/LYTPhoto.h \
+  /Users/cosmistar/Product/LYTPhotoKit/LYTPhotoKit/LYTPhotoKit/UIImage+LYTPhotoKit.h
